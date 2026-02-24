@@ -1,0 +1,20 @@
+# Python cache
+__pycache__/
+*.pyc
+
+# Virtual environments
+venv/
+env/
+
+# Jupyter
+.ipynb_checkpoints/
+
+
+# Model weights
+*.h5
+*.pt
+*.pth
+
+# OS files
+.DS_Store
+Thumbs.db
