@@ -6,12 +6,12 @@ This Python tool optimizes the balancing of a production line by sequencing mach
 
 The script ensures that every generated solution adheres to the following industrial constraints:
 
-* **Cycle Time Management**: No workstation exceeds the defined `CYCLE_TIME` (default: 28.4s).
-* **Efficiency Balancing**: Machines are flagged as invalid if they fall below the `MIN_EFFICIENCY` threshold (default: 80%).
+* **Cycle Time Management**: No workstation exceeds the defined takt time `CYCLE_TIME`.
+* **Efficiency Balancing**: Machines are flagged as invalid if they fall below the `MIN_EFFICIENCY` threshold to prevent bottlenecks.
 * **Fixturing Constraints**: Each machine is limited to a maximum of **two unique part faces** to minimize complex setup and re-clamping.
 * **Automatic Penalty Calculation**:
-    * **Tool Change**: Adds 3.3s when transitioning between different tools.
-    * **Dynamic Indexing**: Adds 1.0s for rotations involving Face 1 and 1.5s for rotations between Face 2 and Face 3.
+    * **Tool Change**: Adds tool change time when transitioning between different tools.
+    * **Dynamic Indexing**: Adds indexing time for different rotations.
 
 ## 📊 Visual Analytics
 
@@ -20,10 +20,3 @@ The tool generates a comprehensive bar chart for each valid solution, providing:
 * **Overhead Visualization**: Distinctive hatching/coloring for Tool Changes and Indexing times.
 * **Performance Metrics**: A "Stats Box" displaying the average, maximum, and minimum deviations from the target Cycle Time.
 * **Compliance Lines**: Visual dashed lines for the Cycle Limit and Efficiency floor.
-
-## 🚀 Getting Started
-
-### 1. Prerequisites
-Ensure you have Python installed along with the following libraries:
-```bash
-pip install pandas matplotlib numpy openpyxl
